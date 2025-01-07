@@ -1,0 +1,174 @@
+---
+title: Library Management System
+---
+
+# Problem Statement
+
+Create a simple library management system where multiple functions are used to perform tasks like adding books, borrowing books, returning books, and checking availability of books in the library.
+*Example*
+py3
+library = Library()
+library.add_book("Harry Potter")  # Adds a book to the library
+library.add_book("Lord of the Rings")  # Adds another book
+library.borrow_book("Harry Potter")  # Borrows a book
+library.check_availability("Harry Potter")  # Checks availability of a book
+library.return_book("Harry Potter")  # Returns a borrowed book
+
+
+# Solution
+
+py3 test.py -r 'python test.py'
+<prefix>
+# some prefix   
+</prefix>
+<template>
+# Solution Template
+
+class Library:
+    def __init__(self):
+        self.books = {}  # Dictionary to store books and their count
+
+    def add_book(self, book_name: str):
+        '''
+        Add a new book to the library.
+
+        Arguments:
+        book_name: str - Name of the book to add.
+        '''
+        if book_name in self.books:
+            self.books[book_name] += 1
+        else:
+            self.books[book_name] = 1
+        print(f"Book '{book_name}' added to the library.")
+
+    def borrow_book(self, book_name: str):
+        '''
+        Borrow a book if available.
+
+        Arguments:
+        book_name: str - Name of the book to borrow.
+        '''
+        if book_name in self.books and self.books[book_name] > 0:
+            self.books[book_name] -= 1
+            print(f"You have successfully borrowed '{book_name}'.")
+        else:
+            print(f"Sorry, the book '{book_name}' is not available.")
+
+    def return_book(self, book_name: str):
+        '''
+        Return a borrowed book.
+
+        Arguments:
+        book_name: str - Name of the book to return.
+        '''
+        if book_name in self.books:
+            self.books[book_name] += 1
+            print(f"Thank you for returning '{book_name}'.")
+        else:
+            print(f"The book '{book_name}' does not belong to this library.")
+
+    def check_availability(self, book_name: str):
+        '''
+        Check if a book is available in the library.
+
+        Arguments:
+        book_name: str - Name of the book to check.
+        '''
+        if book_name in self.books and self.books[book_name] > 0:
+            print(f"The book '{book_name}' is available.")
+        else:
+            print(f"The book '{book_name}' is not available.")
+
+
+    test = <los>...</los><sol>'test'</sol> #tests
+</template>
+<suffix>
+# some suffix
+</suffix>
+<suffix_invisible>
+{% include '../function_type_and_modify_check_suffix.py.jinja' %}
+</suffix_invisible>
+
+
+# Public Test Cases
+
+## Input 1
+
+library = Library()
+library.add_book("Harry Potter")
+library.borrow_book("Harry Potter")
+library.check_availability("Harry Potter")
+
+
+
+## Output 1
+
+
+Book 'Harry Potter' added to the library.
+You have successfully borrowed 'Harry Potter'.
+The book 'Harry Potter' is not available.
+
+
+
+## Input 2
+
+library = Library()
+library.add_book("Lord of the Rings")
+library.borrow_book("Game of Thrones")
+library.check_availability("Lord of the Rings")
+library.return_book("Lord of the Rings")
+
+
+## Output 2
+
+
+Book 'Lord of the Rings' added to the library.
+Sorry, the book 'Game of Thrones' is not available.
+The book 'Lord of the Rings' is available.
+Thank you for returning 'Lord of the Rings'.
+
+
+
+## Input 3 
+
+library = Library()
+library.add_book("The Hobbit")
+library.borrow_book("The Hobbit")
+library.check_availability("The Hobbit")
+library.return_book("The Hobbit")
+
+
+
+## Output 3
+
+
+Book 'The Hobbit' added to the library.
+You have successfully borrowed 'The Hobbit'.
+The book 'The Hobbit' is not available.
+Thank you for returning 'The Hobbit'.
+
+
+
+# Private Test Cases
+
+## Input 1
+
+library = Library()
+library.add_book("The Catcher in the Rye")
+library.add_book("To Kill a Mockingbird")
+library.borrow_book("The Catcher in the Rye")
+library.check_availability("The Catcher in the Rye")
+library.return_book("The Catcher in the Rye")
+library.check_availability("The Catcher in the Rye")
+
+
+
+## Output 1
+
+Book 'The Catcher in the Rye' added to the library.
+Book 'To Kill a Mockingbird' added to the library.
+You have successfully borrowed 'The Catcher in the Rye'.
+The book 'The Catcher in the Rye' is not available.
+Thank you for returning 'The Catcher in the Rye'.
+The book 'The Catcher in the Rye' is available.
+
