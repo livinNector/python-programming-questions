@@ -1,0 +1,247 @@
+---
+title: Basic Operations on Data Types
+---
+
+# Problem Statement
+
+Given a series of operations, perform basic operations on different data types and return the appropriate results.
+
+**Operations to be performed**:
+1. Add 2 integers and return the sum.
+2. Add 2 floating point numbers and return the sum.
+3. Concatenate two strings and return the result.
+4. Add two lists and return the result.
+5. Merge two dictionaries and return the result.
+6. Union two sets and return the result.
+*Example*
+py3
+sum_integers(5, 3)  # 8
+sum_floats(2.5, 3.5)  # 6.0
+concat_strings("Hello", "World")  # "HelloWorld"
+concat_lists([1, 2], [3, 4])  # [1, 2, 3, 4]
+merge_dicts({"a": 1}, {"b": 2})  # {"a": 1, "b": 2}
+union_sets({1, 2}, {2, 3})  # {1, 2, 3}
+
+# Solution
+
+py3 test.py -r 'python test.py'
+<prefix>
+# some prefix   
+</prefix>
+<template>
+def sum_integers(a: int, b: int) -> int:
+    """
+    Add two integers and return the result.
+
+    Arguments:
+    a: int - first integer
+    b: int - second integer
+
+    Return: int - sum of a and b
+    """
+    return a + b
+
+def sum_floats(a: float, b: float) -> float:
+    """
+    Add two floating point numbers and return the result.
+
+    Arguments:
+    a: float - first float
+    b: float - second float
+
+    Return: float - sum of a and b
+    """
+    return a + b
+
+def concat_strings(a: str, b: str) -> str:
+    """
+    Concatenate two strings and return the result.
+
+    Arguments:
+    a: str - first string
+    b: str - second string
+
+    Return: str - concatenation of a and b
+    """
+    return a + b
+
+def concat_lists(a: list, b: list) -> list:
+    """
+    Concatenate two lists and return the result.
+
+    Arguments:
+    a: list - first list
+    b: list - second list
+
+    Return: list - concatenation of a and b
+    """
+    return a + b
+
+def merge_dicts(a: dict, b: dict) -> dict:
+    """
+    Merge two dictionaries and return the result.
+
+    Arguments:
+    a: dict - first dictionary
+    b: dict - second dictionary
+
+    Return: dict - merged dictionary
+    """
+    return {**a, **b}
+
+def union_sets(a: set, b: set) -> set:
+    """
+    Union two sets and return the result.
+
+    Arguments:
+    a: set - first set
+    b: set - second set
+
+    Return: set - union of a and b
+    """
+    return a | b
+
+</template>
+<suffix>
+# some suffix
+</suffix>
+<suffix_invisible>
+{% include '../function_type_and_modify_check_suffix.py.jinja' %}
+</suffix_invisible>
+
+
+# Public Test Cases
+
+## Input 1
+is_equal(
+    sum_integers(5, 3),
+    8
+)
+
+
+
+## Output 1
+
+
+True
+
+
+## Input 2
+
+is_equal(
+    sum_floats(2.5, 3.5),
+    6.0
+)
+
+
+## Output 2
+
+
+True
+
+
+
+## Input 3 
+
+is_equal(
+    concat_strings("Hello", "World"),
+    "HelloWorld"
+)
+
+
+
+## Output 3
+
+
+True
+
+## Input 4
+
+is_equal(
+    concat_lists([1, 2], [3, 4]),
+    [1, 2, 3, 4]
+)
+
+
+
+## Output 4
+
+
+True
+## Input 5
+is_equal(
+    merge_dicts({"a": 1}, {"b": 2}),
+    {"a": 1, "b": 2}
+)
+
+
+
+
+
+## Output 5
+
+
+True
+
+## Input 6
+is_equal(
+    union_sets({1, 2}, {2, 3}),
+    {1, 2, 3}
+)
+
+
+
+## Output 6
+
+
+True
+
+
+# Private Test Cases
+
+## Input 1
+
+is_equal(
+    sum_integers(10, 20),
+    30
+)
+
+
+
+
+## Output 1
+
+True
+
+## Input 2
+
+is_equal(
+    sum_floats(1.1, 2.2),
+    3.3
+)
+
+
+
+
+## Output 2
+
+True
+## Input 3
+
+is_equal(
+    concat_strings("Python", "Programming"),
+    "PythonProgramming"
+)
+
+
+
+
+## Output 3
+
+True
+
+
+
+
+
+
