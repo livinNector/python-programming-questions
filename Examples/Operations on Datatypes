@@ -100,6 +100,8 @@ def union_sets(a: set, b: set) -> set:
     Return: set - union of a and b
     """
     return a | b
+def is_equal(actual, expected):
+    return actual == expected
 
 </template>
 <suffix>
