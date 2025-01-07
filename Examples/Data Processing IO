@@ -1,0 +1,196 @@
+---
+title: Data Processing I/O
+---
+
+# Problem Statement
+
+
+Given a collection of data, perform basic data processing tasks using different techniques such as mapping, filtering, aggregation, sorting, and grouping with keys. The operations will involve working with lists, sets, and dictionaries.
+
+### Tasks
+- **Map**: Square each number in a list of integers.
+- **Filter**: Filter out all even numbers from a list of integers.
+- **Aggregation**: Calculate the sum and average of a list of numbers.
+- **Sort**: Sort a list of tuples based on the second element in each tuple.
+- **Group by Key**: Group a list of dictionaries by a specific key (e.g., 'category').
+- **Uniqueness**: Find the unique elements in a list using a set.
+
+*Example*
+py3
+# Sample Input
+6
+map 10 20 30 40
+filter 1 2 3 4 5 6 7 8 9 10
+aggregation 1000 2000 3000 4000 5000
+sort 4 3 9 2 6 1 7
+group 1 X 2 Y 3 X 4 Y 5 X
+unique 11 12 13 14 15 16 11 12
+
+
+# Sample Output
+100 400 900 1600
+1 3 5 7 9
+15000 3000.0
+1 2 3 4 6 7 9
+{'X': ['1', '3', '5'], 'Y': ['2', '4']}
+{11, 12, 13, 14, 15, 16}
+
+
+
+# Solution
+
+py3 test.py -r 'python test.py'
+<prefix>
+# some prefix   
+</prefix>
+<template>
+    def map_square(numbers: list) -> list:
+    return [x ** 2 for x in numbers]
+
+def filter_odd(numbers: list) -> list:
+    return [x for x in numbers if x % 2 != 0]
+
+def aggregation(numbers: list) -> tuple:
+    total = sum(numbers)
+    avg = total / len(numbers) if numbers else 0
+    return total, avg
+
+def sort_by_second_element(tuples: list) -> list:
+    return sorted(tuples, key=lambda x: x[1])
+
+def group_by_key(data: list, key: str) -> dict:
+    from collections import defaultdict
+    result = defaultdict(list)
+    for item in data:
+        result[item[key]].append(item['value'])
+    return result
+
+def find_unique_elements(data: list) -> set:
+    return set(data)
+
+def process_input():
+    N = int(input())  # number of operations
+    for _ in range(N):
+        operation = input().split()
+        op_type = operation[0]
+        data = list(map(int, operation[1:]))
+        
+        if op_type == "map":
+            result = map_square(data)
+            print(*result)
+        elif op_type == "filter":
+            result = filter_odd(data)
+            print(*result)
+        elif op_type == "aggregation":
+            result = aggregation(data)
+            print(*result)
+        elif op_type == "sort":
+            result = sort_by_second_element([(i, data[i]) for i in range(len(data))])
+            print(*[t[1] for t in result])
+        elif op_type == "group":
+            result = group_by_key([{'category': operation[i], 'value': operation[i+1]} for i in range(1, len(operation), 2)], 'category')
+            print(result)
+        elif op_type == "unique":
+            result = find_unique_elements(data)
+            print(result)
+
+# Call the function to process the input
+process_input()
+    test = <los>...</los><sol>'test'</sol> #tests
+</template>
+<suffix>
+# some suffix
+</suffix>
+<suffix_invisible>
+{% include '../function_type_and_modify_check_suffix.py.jinja' %}
+</suffix_invisible>
+
+
+# Public Test Cases
+
+## Input 1
+
+6
+map 1 2 3 4
+filter 1 2 3 4 5 6
+aggregation 1 2 3 4 5
+sort 1 3 2 1 3
+group 1 A 2 B 3 A
+unique 1 2 3 4 5 6
+
+
+
+## Output 1
+
+1 4 9 16
+1 3 5
+15 3.0
+1 1 2 3 2 3
+{'A': ['1', '3'], 'B': ['2']}
+{1, 2, 3, 4, 5, 6}
+
+
+
+
+## Input 2
+
+5
+map 2 4 6 8
+filter 2 4 6 8 10
+aggregation 10 20 30 40 50
+sort 5 2 1 7 3
+group 1 C 2 D 3 C 4 D
+unique 10 20 30 20 10
+
+
+
+## Output 2
+
+
+4 16 36 64
+2 4 6 8 10
+150 30.0
+1 2 3 5 7
+{'C': ['1', '3'], 'D': ['2', '4']}
+{10, 20, 30}
+
+
+
+## Input 3 
+4
+map 3 6 9 12
+filter 3 6 9 12 15
+aggregation 5 10 15 20
+sort 8 3 1 4 7
+
+
+
+
+## Output 3
+
+
+9 36 81 144
+3 9 15
+50 12.5
+1 3 4 7 8
+
+
+# Private Test Cases
+
+## Input 1
+
+3
+map 2 5 7 10
+filter 2 5 7 10 12
+aggregation 100 200 300
+sort 9 5 8 2 6
+
+
+
+
+## Output 1
+4 25 49 100
+5 7 10 12
+600 200.0
+2 5 6 8 9
+
