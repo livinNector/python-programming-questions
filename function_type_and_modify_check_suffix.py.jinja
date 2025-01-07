@@ -1,0 +1,75 @@
+from copy import deepcopy
+
+{% raw %}
+def order_repr(d):
+    '''Print in lexicographical order of repr if dict and set'''
+    if isinstance(d,dict):
+        d = sorted(d.items(), key=lambda x:order_repr(x[0]) )
+        return f"{{{', '.join(f'{order_repr(k)}: {order_repr(v)}' for k,v in d)}}}"
+    elif isinstance(d,set):
+        return f"{{{', '.join(map(order_repr,sorted(d, key=order_repr)))}}}"
+    else:
+        return repr(d)
+{% endraw %}
+
+def order_print(d):
+    print(order_repr(d))
+
+
+import traceback
+def except_wrap(func):
+    def inner_func(*args,**kwargs):
+        try:
+            func(*args,**kwargs)
+        except AssertionError as e:
+            print(e)
+        except Exception as e:
+            traceback.print_exception(e,limit=-1, file=sys.stdout)
+    return inner_func
+    
+
+def assert_equal(actual_out, expected_out, show=True):
+    assert expected_out is None or actual_out is not None,\
+    "No output returned.\nAre you returning the output? It seems like you are not returning anything."        
+    assert actual_out == expected_out and type(actual_out) == type(expected_out),\
+    (
+        'Your output does not match expected output.\n'
+        f'Expected ouput (type: {type(expected_out).__name__}):\n{order_repr(expected_out)}\n'
+        f'Your output (type: {type(actual_out).__name__}):\n{order_repr(actual_out)}'        
+    )
+    if show:
+        order_print(actual_out)
+
+is_equal = except_wrap(assert_equal)
+
+@except_wrap
+def modify_check(func, in_obj, expected, should_modify=True):
+    in_obj_old = deepcopy(in_obj)
+    actual_out = func(in_obj)
+    if should_modify:
+        assert in_obj_old == expected or in_obj != in_obj_old,\
+            (
+                f'Input {type(in_obj).__name__} is not modified. You should modify the input {type(in_obj).__name__}.\n'
+                f'Original ({type(in_obj).__name__}):\n{order_repr(in_obj)}\n'
+                f'Expected modification:\n{order_repr(expected)}'
+            )
+        assert in_obj == expected,\
+            (
+                f'Incorrect modifcation of the input {type(in_obj).__name__}.\n'
+                f'Expected modification:\n{order_repr(expected)}\n'
+                f'Your modification:\n{order_repr(in_obj)}'
+            )
+        order_print(in_obj)
+    else:
+        assert_equal(actual_out, expected,show=False)
+        assert in_obj_old == in_obj,\
+        (
+            f'Input {type(in_obj).__name__} is modified. You shouldn\'t modify the input {type(in_obj).__name__}.\n'
+            f'Original input ({type(in_obj).__name__}):\n{order_repr(in_obj_old)}\n'
+            f'Your modification:\n{order_repr(in_obj)}'
+        )
+        order_print(actual_out)    
+
+import sys
+exec(sys.stdin.read())
+
