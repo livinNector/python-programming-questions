@@ -1,50 +1,8 @@
-# python-programming-questions
-Questions by Shaileshwar
-
-
-Summary of Questions
-
-1.Extract and Combine Strings
-
-Type: Function type, Data types
-
-Description: Concatenate the first element of each non-empty list from a dictionary's values into a single string separated by spaces.
-
-Example: combine_strings({"name": ["Alice"], "city": ["Paris"]}) returns "Alice Paris".
-
-
-2.Calculate Total Expenditure
-
-Type: Function type, Data Processing
-
-Description: Compute total expenditure by multiplying corresponding prices and quantities, summing the result.
-
-Example: calculate_expenditure([2.5, 4.0], [2, 3]) returns 15.5.
-
-
-3.Filter and Format Student Records
-
-Type: Input-output based, Data Processing I/O
-
-Description: Read student records from input, output names and grades for students scoring above 60.
-
-Example: Input "Alice 75\nBob 60\nCharlie 85", output "Alice 75\nCharlie 85".
-
-
-4.Detect Valid Hexadecimal Colors
-
-Type: Input-output based, Problem-solving
-
-Description: Identify and print unique valid hexadecimal color codes from input lines in the order of appearance.
-
-Example: Input "Colors: #abc, #123456. Invalid: #12345g", output "#abc\n#123456".
-
-
 ---
 title: Extract and Combine Strings
 ---
 
-# Problem Statement 1
+# Problem Statement
 
 Implement a function `combine_strings(data: dict) -> str` that takes a dictionary where keys are strings and values are lists of strings. The function should return a single string formed by concatenating the first element of each list corresponding to the keys, separated by a space. If any list is empty, skip that key.
 
@@ -119,7 +77,7 @@ is_equal(
 title: Calculate Total Expenditure
 ---
 
-# Problem Statement 2
+# Problem Statement
 
 Write a function `calculate_expenditure(prices: list[float], quantities: list[int]) -> float` that calculates the total expenditure by multiplying corresponding prices and quantities, then summing them. If the lists are of unequal length, consider only the minimum length.
 
@@ -195,7 +153,7 @@ is_equal(
 title: Filter and Format Student Records
 ---
 
-# Problem Statement 3
+# Problem Statement
 
 Implement a program that reads student records from standard input and prints students with a grade above 60. Each input line represents a record as `"name grade"`. Output each valid record on a new line.
 
@@ -258,7 +216,7 @@ Jane 70
 title: Detect Valid Hexadecimal Colors
 ---
 
-# Problem Statement 4
+# Problem Statement
 
 Write a program that takes multiple lines of input and prints all valid hexadecimal color codes found in each line. A valid color code starts with a `#` followed by exactly 3 or 6 hexadecimal characters (`0-9`, `a-f`, `A-F`). Print each unique valid color code in the order of appearance.
 
