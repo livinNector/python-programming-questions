@@ -1,0 +1,121 @@
+---
+title: Data Processing I/O
+tags: ['list', 'comprehension', 'filter', 'aggregation', 'function', 'stdin', 'stdout']
+---
+
+### Problem Statement:
+Write a function `process_and_output` that takes a list of integers from the input, multiplies each number by 3, filters out the numbers greater than a provided `filter_threshold`, and calculates the sum of the filtered numbers. Finally, it should print the results in the specified format:
+
+The function should perform the following steps:
+1. Multiply each number in the list by 3.
+2. Filter out numbers that are greater than the `filter_threshold` after multiplication.
+3. Calculate the sum of the filtered numbers.
+4. Print the results in the following format:
+   - List of multiplied numbers.
+   - List of filtered numbers.
+   - Sum of filtered numbers.
+
+### Input:
+- A list of integers (space-separated).
+- A single integer `filter_threshold`.
+
+### Output:
+- Print the results in the following format:
+Doubled Numbers: <list of doubled numbers> 
+Filtered Numbers: <list of filtered numbers> 
+Sum of Filtered Numbers: <sum of filtered numbers>
+
+
+
+
+### Constraints:
+- The input list will contain at least 1 and at most 100 integers.
+- Each integer will be in the range [-10^6, 10^6].
+- The filter threshold will be an integer in the range [-10^6, 10^6].
+
+### Solution:
+
+```python
+# Driver Code (to handle I/O)
+def driver_function():
+  # Accepting inputs from stdin
+  numbers = list(map(int, input().split()))  # Read the list of numbers
+  filter_threshold = int(input())  # Read the threshold value
+  
+  # Calling the solution function and printing the result
+  process_and_output(numbers, filter_threshold)
+
+# Template Function that needs to be implemented by the student
+<template>
+def process_and_output(numbers, filter_threshold):
+  '''
+  Perform the following operations on the input list:
+  1. Multiply each number by 3.
+  2. Filter the numbers greater than the filter_threshold after multiplication.
+  3. Find the sum of filtered numbers.
+  
+  Arguments:
+  numbers: list - a list of integers.
+  filter_threshold: int - the threshold for filtering.
+
+  Return: None - Instead of returning, print the results.
+  '''
+  <los>...</los>
+  <sol>
+  # Step 1: Multiply each number by 3
+  multiplied_numbers = [num * 3 for num in numbers]
+  
+  # Step 2: Filter out numbers greater than the threshold
+  filtered_numbers = [num for num in multiplied_numbers if num <= filter_threshold]
+  
+  # Step 3: Calculate the sum of filtered numbers
+  sum_of_filtered = sum(filtered_numbers)
+  
+  # Print the result in the required format
+  print(f"Doubled Numbers: {multiplied_numbers}")
+  print(f"Filtered Numbers: {filtered_numbers}")
+  print(f"Sum of Filtered Numbers: {sum_of_filtered}")
+  </sol>
+</template>
+
+### Test Cases
+
+#### Public Test Cases
+
+## Input 1
+1 2 3 4 5
+10
+
+## Output 1
+Doubled Numbers: [3, 6, 9, 12, 15]
+Filtered Numbers: [3, 6, 9]
+Sum of Filtered Numbers: 18
+
+## Input 2
+-1 -2 -3 -4 -5
+-6
+
+## Output 2
+Doubled Numbers: [-3, -6, -9, -12, -15]
+Filtered Numbers: [-3, -6]
+Sum of Filtered Numbers: -9
+
+#### Private Test Cases
+
+## Input 1
+10 20 30 40 50
+60
+
+## Output 1
+Doubled Numbers: [30, 60, 90, 120, 150]
+Filtered Numbers: [30, 60]
+Sum of Filtered Numbers: 90
+
+## Input 2
+-10 -20 -30 -40 -50
+-100
+
+## Output 2
+Doubled Numbers: [-30, -60, -90, -120, -150]
+Filtered Numbers: [-30, -60, -90]
+Sum of Filtered Numbers: -180

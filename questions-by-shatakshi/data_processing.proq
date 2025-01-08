@@ -1,0 +1,108 @@
+---
+title: Process and Filter Numbers
+tags: ['list', 'comprehension', 'filter', 'aggregation', 'function']
+---
+
+### Problem Statement
+Write a function `process_numbers` that takes a list of integers and a filter threshold as input, and performs the following operations:
+1. Multiply each number in the list by 2.
+2. Filter out numbers greater than the `filter_threshold` after multiplication.
+3. Calculate the sum of the filtered numbers.
+
+The function should return a tuple containing:
+- A list of the doubled numbers.
+- A list of the filtered numbers.
+- The sum of the filtered numbers.
+
+### Input
+1. `numbers` - a list of integers.
+2. `filter_threshold` - an integer specifying the threshold for filtering.
+
+### Output
+A tuple with:
+1. A list of doubled numbers.
+2. A list of filtered numbers.
+3. The sum of the filtered numbers.
+
+### Constraints
+- The input list will contain at least 1 and at most 100 integers.
+- Each integer will be in the range [-10^6, 10^6].
+- The filter threshold will be an integer in the range [-10^6, 10^6].
+
+### Solution
+
+```python
+# Driver Code (to handle I/O)
+def driver_function():
+    # Accepting inputs from the user or from test cases
+    numbers = eval(input())  # Read the list of numbers
+    filter_threshold = int(input())  # Read the threshold value
+    
+    # Calling the solution function and printing the result
+    result = process_numbers(numbers, filter_threshold)
+    print(result)
+
+# Template Function that needs to be implemented by the student
+<template>
+def process_numbers(numbers, filter_threshold):
+    '''
+    Perform the following operations on the input list:
+    1. Multiply each number by 2.
+    2. Filter the numbers greater than the filter_threshold after multiplication.
+    3. Find the sum of filtered numbers.
+    
+    Arguments:
+    numbers: list - a list of integers.
+    filter_threshold: int - the threshold for filtering.
+
+    Return: tuple - (list of doubled numbers, filtered list, sum of filtered list).
+    '''
+    <los>...</los>
+    <sol>
+    # Step 1: Double the numbers
+    doubled_numbers = [num * 2 for num in numbers]
+    
+    # Step 2: Filter numbers greater than the threshold
+    filtered_numbers = [num for num in doubled_numbers if num > filter_threshold]
+    
+    # Step 3: Calculate the sum of filtered numbers
+    sum_of_filtered = sum(filtered_numbers)
+    
+    # Return the result as a tuple
+    return (doubled_numbers, filtered_numbers, sum_of_filtered)
+    </sol>
+</template>
+
+### Test Cases
+
+#### Public Test Cases
+
+## Input 1
+[1, 2, 3, 4, 5]
+2
+
+## Output 1
+([2, 4, 6, 8, 10], [4, 6, 8, 10], 28)
+
+## Input 2
+[10, 20, 30, 40, 50]
+25
+
+## Output 2
+([20, 40, 60, 80, 100], [40, 60, 80, 100], 280)
+
+#### Private Test Cases
+
+## Input 1
+[100, 200, 300, 400, 500]
+150
+
+## Output 1
+([200, 400, 600, 800, 1000], [200, 400, 600, 800, 1000], 3000)
+
+## Input 2
+[500, 400, 300, 200, 100]
+250
+
+## Output 2
+([1000, 800, 600, 400, 200], [1000, 800, 600, 400], 2800)

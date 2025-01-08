@@ -1,0 +1,142 @@
+---
+title: Student Score Management System
+tags: ['list', 'function', 'sorting', 'filtering', 'input-output', 'aggregation']
+---
+
+## Problem Statement
+
+You are tasked with building a system that manages the scores of students. The system will handle multiple operations, including adding students, removing them, updating scores, and calculating statistics based on the current list of students.
+
+## Solution Template
+
+<template>
+class StudentScoreManager:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name: str, score: int):
+        """
+        Adds a new student with the given name and score.
+        If the student already exists, updates their score.
+        """
+        self.students[name] = score
+
+    def remove_student(self, name: str):
+        """
+        Removes a student by their name.
+        """
+        if name in self.students:
+            del self.students[name]
+        else:
+            print(f"Error: Student {name} not found.")
+
+    def update_score(self, name: str, new_score: int):
+        """
+        Updates the score of the student with the given name.
+        If the student does not exist, prints an error message.
+        """
+        if name in self.students:
+            self.students[name] = new_score
+        else:
+            print(f"Error: Student {name} not found.")
+
+    def average_score(self):
+        """
+        Calculates and returns the average score of all students.
+        """
+        if len(self.students) > 0:
+            return sum(self.students.values()) / len(self.students)
+        return 0
+
+    def highest_score(self):
+        """
+        Returns the name(s) of the student(s) with the highest score.
+        """
+        if len(self.students) > 0:
+            highest = max(self.students.values())
+            return [name for name, score in self.students.items() if score == highest]
+        return []
+
+    def print_all_students(self):
+        """
+        Prints the list of all students in descending order of scores.
+        """
+        sorted_students = sorted(self.students.items(), key=lambda x: x[1], reverse=True)
+        for name, score in sorted_students:
+            print(f"{name}: {score}")
+
+    def filter_by_score(self, threshold: int):
+        """
+        Filters out students with scores below the given threshold and
+        prints the remaining students sorted by score in descending order.
+        """
+        filtered_students = {name: score for name, score in self.students.items() if score >= threshold}
+        sorted_filtered = sorted(filtered_students.items(), key=lambda x: x[1], reverse=True)
+        for name, score in sorted_filtered:
+            print(f"{name}: {score}")
+</template>
+
+<los>
+# The system uses a dictionary to manage students and their scores for efficient lookups, updates, and removals.
+# Scores are processed and sorted using Python's built-in `sorted()` function and dictionary comprehensions for filtering.
+</los>
+
+## Test Cases
+
+# Public Test Case 1
+input: |
+    add_student John 85
+    add_student Jane 92
+    add_student Bob 78
+    update_score John 90
+    average_score
+    highest_score
+    print_all_students
+    filter_by_score 80
+output: |
+    Average Score: 86.67
+    Highest Score: ['Jane']
+    John: 90
+    Jane: 92
+    Bob: 78
+    John: 90
+    Jane: 92
+
+# Public Test Case 2
+input: |
+    add_student Alice 88
+    add_student Bob 90
+    remove_student Alice
+    average_score
+    highest_score
+    print_all_students
+output: |
+    Average Score: 90.0
+    Highest Score: ['Bob']
+    Bob: 90
+
+# Private Test Case 1
+input: |
+    add_student Charlie 72
+    add_student Dave 95
+    update_score Charlie 80
+    remove_student Alice
+    filter_by_score 80
+output: |
+    Dave: 95
+    Charlie: 80
+
+# Private Test Case 2
+input: |
+    add_student Eve 65
+    add_student Frank 80
+    add_student Grace 90
+    remove_student Frank
+    average_score
+    highest_score
+    print_all_students
+output: |
+    Average Score: 77.5
+    Highest Score: ['Grace']
+    Grace: 90
+    Eve: 65

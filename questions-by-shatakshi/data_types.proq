@@ -1,0 +1,125 @@
+---
+title: Basic Operations on Data Types
+tags: ['int', 'float', 'str', 'list', 'dict', 'set', 'function', 'no loops']
+---
+
+### Problem Statement
+Write a function `perform_operations` that takes a list of mixed data types, and returns a dictionary containing the results of different operations on these data types.
+
+The dictionary should have the following keys:
+- `'int_sum'`: sum of all integer elements in the list.
+- `'float_sum'`: sum of all float elements in the list, rounded to two decimals.
+- `'str_concat'`: concatenation of all string elements.
+- `'list_concat'`: concatenation of all list elements (use list.extend).
+- `'dict_merge'`: merging of all dictionary elements (use dict.update).
+- `'set_union'`: union of all set elements (use set.union).
+
+The function should handle empty or missing values gracefully by returning appropriate defaults:
+- For `'int_sum'`, return 0 if no integers are present.
+- For `'float_sum'`, return 0 if no floats are present.
+- For `'str_concat'`, return an empty string if no strings are present.
+- For `'list_concat'`, return an empty list if no lists are present.
+- For `'dict_merge'`, return an empty dictionary if no dictionaries are present.
+- For `'set_union'`, return an empty set if no sets are present.
+
+### Solution
+
+```python
+# Driver Code (to handle I/O)
+def driver_function():
+    # Accepting inputs from the user or from test cases
+    input_list = eval(input())  # Read the mixed data list
+    
+    # Calling the solution function and printing the result
+    result = perform_operations(input_list)
+    print(result)
+
+# Template Function that needs to be implemented by the student
+<template>
+def perform_operations(data):
+    '''
+    Given a list containing mixed data types, perform basic operations on each type:
+    - Sum all integers
+    - Sum all floats, rounded to 2 decimals
+    - Concatenate all strings
+    - Concatenate all lists
+    - Merge all dictionaries
+    - Union all sets
+    
+    Arguments:
+    data: list - a list containing integers, floats, strings, lists, dictionaries, and sets.
+
+    Return: dict - a dictionary with results of all operations.
+    '''
+    <los>...</los>
+    <sol>
+    result = {
+        'int_sum': sum(x for x in data if isinstance(x, int)),
+        'float_sum': round(sum(x for x in data if isinstance(x, float)), 2),
+        'str_concat': ''.join(x for x in data if isinstance(x, str)),
+        'list_concat': sum([x for x in data if isinstance(x, list)], []),
+        'dict_merge': {k: v for d in data if isinstance(d, dict) for k, v in d.items()},
+        'set_union': set().union(*(x for x in data if isinstance(x, set))),
+    }
+    return result
+    </sol>
+</template>
+
+### Test Cases
+
+#### Public Test Cases
+
+## Input 1
+[1, 2.5, 'Hello', [1, 2], {'a': 1}, {1, 2}]
+
+## Output 1
+{ 
+  'int_sum': 3, 
+  'float_sum': 2.5, 
+  'str_concat': 'Hello', 
+  'list_concat': [1, 2], 
+  'dict_merge': {'a': 1}, 
+  'set_union': {1, 2} 
+}
+
+## Input 2
+[3, 4.2, 'World', [], {}, {3, 4}]
+
+## Output 2
+{ 
+  'int_sum': 7, 
+  'float_sum': 4.2, 
+  'str_concat': 'World', 
+  'list_concat': [], 
+  'dict_merge': {}, 
+  'set_union': {3, 4} 
+}
+
+
+#### Private Test Cases
+
+## Input 1
+[10, 'Python', [5, 6], {'x': 10}, {1, 2}]
+
+## Output 1
+{ 
+  'int_sum': 10, 
+  'float_sum': 0, 
+  'str_concat': 'Python', 
+  'list_concat': [5, 6], 
+  'dict_merge': {'x': 10}, 
+  'set_union': {1, 2} 
+}
+
+## Input 2
+[1, 2, 3, 4, 5]
+
+## Output 2
+{ 
+  'int_sum': 15, 
+  'float_sum': 0, 
+  'str_concat': '', 
+  'list_concat': [], 
+  'dict_merge': {}, 
+  'set_union': set() 
+}
