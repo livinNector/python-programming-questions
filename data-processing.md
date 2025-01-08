@@ -39,16 +39,12 @@ def process_numbers(input_list):
 <template>
 <sol>
 def process_numbers(input_list):
-    # Step 1: Filter out the negative numbers
     positive_numbers = [num for num in input_list if num >= 0]
     
-    # Step 2: Double the remaining values
     doubled_values = [num * 2 for num in positive_numbers]
     
-    # Step 3: Find unique values
     unique_values = set(doubled_values)
     
-    # Step 4: Calculate and return the sum
     return sum(unique_values)
 </sol>
 </template>

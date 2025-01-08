@@ -33,7 +33,7 @@ else:
     print(0)
 </sol>
 </template>
-
+```
 # Public Test Cases
 
 ## Input 1
