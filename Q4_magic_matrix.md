@@ -166,9 +166,8 @@ matrix = [
 ```
 
 ## Output 1
-True
 
 ```
-Decoded Text: WELCOME TO THE CRYPTOGRAPHY CHALLENGE
+True
 
 ```
