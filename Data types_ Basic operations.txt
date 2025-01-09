@@ -1,0 +1,107 @@
+---
+Data types: Basic operations on datatypes (int, float, str, list, dict, set)
+---
+# Problem Statement
+
+a function perform_operations that takes the following inputs:
+
+An integer a
+A float b
+A string c
+A list of integers lst
+A dictionary d
+A set s
+
+The function  performs the following operations:
+
+Add a and b, and return the result as a float.
+Concatenate the string c to the string 'Hello, ' and return the result.
+Append the value 100 to the list lst and return the updated list.
+Add a new key-value pair 'new_key': 500 to the dictionary d and return the updated dictionary.
+Add the integer 10 to the set s and return the updated set.
+
+**Example**
+```py3
+Input
+a = 10
+b = 5.5
+c = 'World'
+lst = [1, 2, 3]
+d = {'key': 100}
+s = {1, 2, 3}
+```
+Output
+(15.5, 'Hello, World', [1, 2, 3, 100], {'key': 100, 'new_key': 500}, {1, 2, 3, 10})
+# Solution
+
+```py3 test.py -r 'python test.py'
+<prefix>
+# some prefix   
+</prefix>
+<template>
+def perform_operations(a, b, c, lst, d, s):
+    # 1. Add integer and float
+    result_1 = float(a + b)
+    
+    # 2. Concatenate string
+    result_2 = 'Hello, ' + c
+    
+    # 3. Append value to list
+    lst.append(100)
+    
+    # 4. Add new key-value pair to dictionary
+    d['new_key'] = 500
+    
+    # 5. Add value to set
+    s.add(10)
+    
+    return result_1, result_2, lst, d, s
+</template>
+<suffix>
+# some suffix
+</suffix>
+<suffix_invisible>
+{% include '../function_type_and_modify_check_suffix.py.jinja' %}
+</suffix_invisible>
+```
+
+# Public Test Cases
+
+## Input 1
+
+```
+a = 25
+b = 4.25
+c = 'Python'
+lst = [7, 8, 9]
+d = {'existing_key': 200}
+s = {7, 8}
+```
+
+## Output 1
+
+```
+(29.25, 'Hello, Python', [7, 8, 9, 100], {'existing_key': 200, 'new_key': 500}, {7, 8, 10})
+```
+
+
+
+# Private Test Cases
+
+## Input 1
+
+```
+a = 12         
+b = 3.5        
+c = "Ajay"  
+lst = [5, 10]  
+d = {'key1': 100, 'key2': 200} 
+s = {4, 5} 
+```
+
+## Output 1
+
+```
+(15.5,'Hello,Ajay',[5, 10, 100],{'key1': 100, 'key2': 200, 'new_key': 500},{4, 5, 10})
+
+```
