@@ -1,0 +1,92 @@
+---
+Title: Finding high scorers and average of each student.
+---
+
+# Problem Statement
+ a function process_data that takes a list of dictionaries, each representing a student, where each dictionary has:
+
+'name': the name of the student (a string).
+'marks': a list of integers representing the marks the student scored in different subjects.
+
+Returns:
+
+Return a list of names of students who scored above 60 in all subjects.
+Return the average marks for each student as a dictionary where the key is the student's name and the value is the average of their marks.
+
+**Example**
+```
+Input
+students = [
+    {'name': 'Ali, 'marks': [70, 80, 90]},
+    {'name': 'Bhargav', 'marks': [50, 55, 60]},
+    {'name': 'Chethan', 'marks': [90, 85, 100]}
+]
+
+```
+Output
+['Ali', 'Chaman']
+{'Ali': 80.0, 'Bhargav': 55.0, 'Chethan': 91.66666666666667}
+
+# Solution
+
+```py3 test.py -r 'python test.py'
+<template>
+def process_data(students):
+    
+    high_scorers = [student['name'] for student in students if all(mark > 60 for mark in student['marks'])]
+    
+    averages = {student['name']: sum(student['marks']) / len(student['marks']) for student in students}
+    
+    return high_scorers, averages
+
+</template>
+<suffix_invisible>
+{% include '../function_type_and_modify_check_suffix.py.jinja' %}
+</suffix_invisible>
+```
+
+# Public Test Cases
+
+## Input 1
+
+```
+students = [
+    {'name': 'Dhir', 'marks': [72, 65, 50]},
+    {'name': 'isha', 'marks': [60, 59, 59]},
+    {'name': 'Fafa', 'marks': [90, 95, 93]}
+]
+
+```
+
+## Output 1
+
+```
+['Dhir', 'Fafa']
+{'Dhir': 62.33, 'Isha': 59.33, 'Fafa': 92.66666666666667}
+```
+
+
+# Private Test Cases
+
+## Input 1
+
+```
+students = [
+    {"name": "Aman", "marks": [90, 85, 88]},
+    {"name": "bharat", "marks": [55, 75, 63]},
+    {"name": "Cinni", "marks": [70, 70, 70]},
+    {"name": "Druv", "marks": [60, 60, 50]},
+]
+```
+
+## Output 1
+
+```
+high_scorers = ['Aman', 'Cinni']
+averages = {
+    "Aman": 87.67,
+    "Bharat": 64.33,
+    "Cinni": 70.0,
+    "Druv": 56.67
+}
+```
