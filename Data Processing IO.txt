@@ -1,0 +1,97 @@
+---
+Title:  Data Processing I/O 
+---
+
+# Problem Statement
+ given a series of integers in the form of input.
+
+Print the sum of all the numbers greater than 50.
+Print the count of numbers divisible by 10.
+
+# Solution
+```python test.py -r 'python test.py'
+<template>
+<sol>
+ nums = list(map(int, input().split()))
+    
+    greater_than_50_sum = sum(num for num in nums if num > 50)
+    divisible_by_10_count = sum(1 for num in nums if num % 10 == 0)
+    
+    print(greater_than_50_sum)
+    print(divisible_by_10_count)
+</sol>
+</template>
+```
+
+# Public Test Cases
+
+## Input 1
+```
+1 2 3 4 5
+```
+
+## Output 1
+```
+300
+3
+
+```
+
+## Input 2
+```
+51 60 75 23 91
+```
+
+## Output 2
+```
+226
+0
+```
+
+## Input 3
+```
+5 6 15 30 45 50
+```
+
+## Output 3
+```
+0
+4
+```
+
+
+# Private Test Cases
+
+
+## Input 1
+```
+10 20 30 40 50 60
+```
+
+## Output 1
+```
+210
+6
+```
+
+## Input 2
+```
+55 60 100 200 300
+```
+
+## Output 2
+```
+1015
+0
+```
+
+## Input 3
+```
+75
+```
+
+## Output 3
+```
+75
+0
+```
