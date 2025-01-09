@@ -1,0 +1,118 @@
+---
+title: Operate on Mixed Data Types
+---
+
+# Problem Statement
+
+Write a function `process_data` that takes three arguments: an integer `n`, a float `f`, and a string `s`. The function should:
+
+1. Return the sum of `n` and `f`.
+2. Convert the string `s` to uppercase.
+3. Return the two results as a tuple.
+
+**Example**
+```py3
+process_data(5, 4.5, "hello") # (9.5, "HELLO")
+process_data(10, 3.2, "world") # (13.2, "WORLD")
+```
+
+# Solution
+<template>
+```py3
+def process_data(n: int, f: float, s: str) -> tuple:
+    '''
+    Given an integer, a float, and a string, perform specific operations and return the results.
+
+    Arguments:
+    n: int - an integer value.
+    f: float - a floating-point number.
+    s: str - a string.
+
+    Return: tuple - A tuple containing the sum of n and f, and the uppercase version of s.
+    '''
+    return (n + f, s.upper())
+```
+</template>
+# Public Test Cases
+
+## Input 1
+
+```
+is_equal(
+    process_data(2, 3.5, "test"),
+    (5.5, "TEST")
+)
+```
+
+## Output 1
+
+```
+True
+```
+
+## Input 2
+
+```
+is_equal(
+    process_data(7, 0.0, "python"),
+    (7.0, "PYTHON")
+)
+```
+
+## Output 2
+
+```
+True
+```
+
+## Input 3
+
+```
+is_equal(
+    process_data(-5, 10.2, "Data"),
+    (5.2, "DATA")
+)
+```
+
+## Output 3
+
+```
+True
+```
+
+# Private Test Cases
+
+## Input 1
+
+```
+n = 0
+f = 1.1
+s = "coding"
+is_equal(
+    process_data(n, f, s),
+    (1.1, "CODING")
+)
+n = 100
+f = 99.99
+s = "Mix"
+is_equal(
+    process_data(n, f, s),
+    (199.99, "MIX")
+)
+n = -50
+f = -50.5
+s = "negative"
+is_equal(
+    process_data(n, f, s),
+    (-100.5, "NEGATIVE")
+)
+```
+
+## Output 1
+
+```
+True
+True
+True
+```
+

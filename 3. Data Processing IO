@@ -1,0 +1,113 @@
+---
+title: Check if Three-Digit Odd Number
+---
+
+# Problem Statement
+
+Given an integer `n`, return `True` if the number is a three-digit odd number, and `False` otherwise.
+
+**Example**
+```py3
+is_three_digit_odd(123) # True , both three-digit and odd
+is_three_digit_odd(22) # False, not three-digit
+is_three_digit_odd(120) # False, three-digit but not odd
+```
+
+# Solution
+
+```py3
+def is_three_digit_odd(n: int) -> bool:
+    '''
+    Given an integer, check if it is a three-digit odd number.
+
+    Arguments:
+    n: int - an integer to check.
+
+    Return: bool - True if it is a three-digit odd number, else False.
+    '''
+    return 100 <= n <= 999 and n % 2 != 0
+```
+
+# Public Test Cases
+
+## Input 1
+
+```
+is_equal(
+    is_three_digit_odd(135),
+    True
+)
+```
+
+## Output 1
+
+```
+True
+```
+
+## Input 2
+
+```
+is_equal(
+    is_three_digit_odd(200),
+    False
+)
+```
+
+## Output 2
+
+```
+False
+```
+
+## Input 3
+
+```
+is_equal(
+    is_three_digit_odd(99),
+    False
+)
+```
+
+## Output 3
+
+```
+False
+```
+
+# Private Test Cases
+
+## Input 1
+
+```
+n = 101
+is_equal(
+    is_three_digit_odd(n),
+    True
+)
+n = 999
+is_equal(
+    is_three_digit_odd(n),
+    True
+)
+n = 500
+is_equal(
+    is_three_digit_odd(n),
+    False
+)
+n = 89
+is_equal(
+    is_three_digit_odd(n),
+    False
+)
+```
+
+## Output 1
+
+```
+True
+True
+False
+False
+```
+

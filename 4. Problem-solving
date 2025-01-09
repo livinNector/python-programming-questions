@@ -1,0 +1,129 @@
+---
+title: Sum of Unique Elements
+---
+
+# Problem Statement
+
+Given a list of integers `arr`, return the sum of all unique elements in the list. A unique element is one that appears exactly once in the list.
+
+**Example**
+```py3
+sum_of_unique([1, 2, 3, 2]) # 4, because only 1 and 3 are unique.
+sum_of_unique([4, 4, 4, 4]) # 0, because there are no unique elements.
+sum_of_unique([10, 20, 30]) # 60, because all elements are unique.
+
+
+# Solution
+
+<prefix>
+# Import required modules
+from collections import Counter
+</prefix>
+<template>
+def sum_of_unique(arr: list) -> int:
+    '''
+    Given a list of integers, return the sum of all unique elements.
+
+    Arguments:
+    arr: list - a list of integers.
+
+    Return: int - sum of unique elements in the list.
+    '''
+    <los>...</los>
+    counts = Counter(arr)
+    <sol>return sum(num for num, count in counts.items() if count == 1)</sol>
+    test = <los>...</los><sol>'test'</sol> #tests
+</template>
+<suffix>
+# Example test cases
+</suffix>
+<suffix_invisible>
+{% include '../function_type_and_modify_check_suffix.py.jinja' %}
+</suffix_invisible>
+
+
+# Public Test Cases
+
+## Input 1
+
+```
+is_equal(
+    sum_of_unique([1, 2, 2, 3]),
+    4
+)
+
+```
+
+## Output 1
+
+```
+True
+```
+
+## Input 2
+
+```
+is_equal(
+    sum_of_unique([7, 8, 8, 9]),
+    16
+)
+
+```
+
+## Output 2
+
+```
+True
+
+```
+
+## Input 3
+
+```
+is_equal(
+    is_two_digit_even(100),
+    False
+)
+```
+
+## Output 3
+
+```
+True
+
+```
+
+# Private Test Cases
+
+arr = [5, 5, 5, 6]
+is_equal(
+    sum_of_unique(arr),
+    6
+)
+arr = [1, 1, 1, 1]
+is_equal(
+    sum_of_unique(arr),
+    0
+)
+arr = [100, 200, 300, 100, 400]
+is_equal(
+    sum_of_unique(arr),
+    900
+)
+arr = [0]
+is_equal(
+    sum_of_unique(arr),
+    0
+)
+
+```
+
+## Output 1
+
+```
+True
+True
+True
+True
+```
+
