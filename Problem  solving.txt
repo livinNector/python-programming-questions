@@ -1,0 +1,173 @@
+---
+Problem-solving:-A function type application development type question with multiple functions to implement.
+---
+---
+title: a simple to-do list.
+---
+
+# Problem Statement
+Implement the following functions:
+1.add_task(tasks: dict, task: str): if not prsent already in the list Adds the task to the to-do list(dictionary) unticked(key value is "Not done") else informs "The task your trying to Add is Already present ".
+2.remove_task(tasks:dict, task: str): if present in the list Removes a task from the to-do list or else informs "The task your trying Remove is Not present".
+3.def tick_task(tasks:dict,task:str):Ticks the task(key value is "Done") 
+4.def untick_task(tasks:dict,task:str):Unticks the task(key value is "Not done")
+5.view_tasks(tasks:dict): Displays all tasks in the to-do list, each on a new line.
+
+**Example**
+```
+tasks={}
+add_task(tasks, "Buy groceries")
+add_task(tasks, "Read a book")
+add_task(tasks, "Go for a walk")
+
+view_tasks(tasks)
+
+tick_task(tasks,"Buy groceries")
+add_task(tasks, "Read a book")
+
+
+view_tasks(tasks)
+
+remove_task(tasks, "Go for a walk")
+
+remove_task(tasks, "Go for a walk")
+
+view_tasks(tasks)
+
+```
+Buy groceries:Not done
+Read a book:Not done
+Go for a walk:Not done
+
+The task your trying to Add is Already present 
+
+Buy groceries:Done
+Read a book:Not done
+Go for a walk:Not done
+
+The task your trying Remove is Not present 
+
+Buy groceries:Done
+Read a book:Not done
+
+# Solution
+
+```py3 test.py -r 'python test.py'
+<template>
+def add_task(tasks:dict,task: str)->None:
+    if task not in tasks:
+      tasks[task]="Not done"
+    else: return "The task your trying to Add is Already present \n"
+def remove_task(tasks:dict,task:str)->None:
+    if task in tasks:
+      tasks.pop(task)
+    else:return "The task your trying Remove is Not present \n"
+def tick_task(tasks:dict,task:str)->None:
+      if task in tasks:
+        tasks.update({task:"Done"})
+      else:print("Task not present")
+def untick_task(tasks:dict,task:str)->None:
+      if task in tasks:
+        tasks.update({task:"Not done"})
+      else:print("Task not present")
+def view_tasks(tasks: dict) -> str:
+  s=""
+  for task in tasks:
+        s= s+f"{task}:{tasks[task]}"+"\n"
+  return s
+
+</template>
+<suffix_invisible>
+{% include '../function_type_and_modify_check_suffix.py.jinja' %}
+</suffix_invisible>
+```
+
+# Public Test Cases
+
+## Input 1
+
+```
+tasks={}
+add_task(tasks, "call 1534")
+add_task(tasks, "message 8976")
+add_task(tasks, "videocall 7864")
+
+view_tasks(tasks)
+
+tick_task(tasks, "call 1534")
+
+add_task(tasks, "message 8976")
+
+view_tasks(tasks)
+
+remove_task(tasks, "videocall 7864")
+
+remove_task(tasks, "videocall 7864")
+
+view_tasks(tasks)
+
+```
+
+## Output 1
+
+```
+call 1534:Not done
+message 8976:Not done
+videocall 7864:Not done
+
+The task your trying to Add is Already present 
+
+call 1534:Done
+message 8976:Not done
+videocall 7864:Not done
+
+The task your trying Remove is Not present 
+
+call 1534:Done
+```
+
+
+# Private Test Cases
+
+## Input 1
+
+```
+tasks={}
+add_task(tasks, "Python lecture 7.1")
+add_task(tasks, "GRPA week 5")
+add_task(tasks, "Lve session")
+
+view_tasks(tasks)
+
+tick_task(tasks, "Python lecture 7.1")
+
+add_task(tasks, "GRPA week 5")
+
+view_tasks(tasks)
+
+remove_task(tasks, "Lve session")
+
+remove_task(tasks, "Lve session")
+
+view_tasks(tasks)
+
+```
+
+## Output 1
+
+```
+Python lecture 7.1:Not done
+GRPA week 5:Not done
+Lve session:Not done
+
+The task your trying to Add is Already present 
+
+Python lecture 7.1:Done
+GRPA week 5:Not done
+Lve session:Not done
+
+The task your trying Remove is Not present 
+
+Python lecture 7.1:Done
+GRPA week 5:Not done
+```
