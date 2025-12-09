@@ -1,6 +1,6 @@
 ---
 title: LCM HCF
-tags: ['LCM', 'HCF', 'GCD', 'Function', 'Input Output', 'loop', 'multiple input']
+tags: ['LCM', 'HCF', 'GCD', 'Function', 'Input Output', 'loop']
 ---
 
 # Problem Statement
@@ -213,3 +213,4 @@ done
 14280
 5
 ```
+
