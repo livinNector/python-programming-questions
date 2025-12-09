@@ -1,6 +1,5 @@
 ---
 title: count to 0
-tags: ['sample tag1', 'sample tag2']
 ---
 
 # Problem Statement
@@ -209,4 +208,5 @@ already zero
 
 ```
 already zero
+
 ```
