@@ -1,6 +1,6 @@
 ---
 title: GST calculator
-tags: ['GST', 'Tax', 'Sales', 'Finance', 'Python', 'Econony', 'multiple input']
+tags: ['GST', 'Tax', 'Sales', 'Finance', 'Python', 'Econony']
 ---
 
 # Problem Statement
